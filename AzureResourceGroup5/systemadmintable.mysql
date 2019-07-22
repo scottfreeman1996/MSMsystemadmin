@@ -1,0 +1,22 @@
+DROP TABLE IF EXISTS  `systemadmindatabase`.`permission` ;
+FLUSH TABLES  `systemadmindatabase`.`permission`  ; 
+CREATE TABLE `systemadmindatabase`.`permission` (
+  `PermissionID` INT NOT NULL,
+  `SystemUserName` VARCHAR(20) NOT NULL,
+  `PermissionUpdatePersonalDetails` TINYINT NOT NULL DEFAULT 1,
+  `PermissionManageDirectSkillReports` TINYINT NOT NULL DEFAULT 0,
+  `PermissionManageRoles` TINYINT NOT NULL DEFAULT 0,
+  `PermissionManageMastekSkills` TINYINT NOT NULL DEFAULT 0,
+  `PermissionManageCompetencies` TINYINT NOT NULL DEFAULT 0,
+  `PermissionManageSFIA` TINYINT NOT NULL DEFAULT 0,
+  `PermissionManageHardSkills` TINYINT NOT NULL DEFAULT 0,
+  `PermissionManageOrgStructure` TINYINT NOT NULL DEFAULT 0,
+  `PermissionViewPersonalRoleSkills` TINYINT NOT NULL DEFAULT 1,
+  `PermissionViewOrgStrucutre` TINYINT NOT NULL DEFAULT 0,
+  `PermissionViewBilled` TINYINT NOT NULL DEFAULT 0,
+  `PermissionViewRoleSkillMapping` TINYINT NOT NULL DEFAULT 1,
+  `PermissionViewRolesOfSameGrade` TINYINT NOT NULL DEFAULT 1,
+  `PermissionViewCareerPath` TINYINT NOT NULL DEFAULT 1,
+  PRIMARY KEY (`PermissionID`),
+  UNIQUE INDEX `PermissionID_UNIQUE` (`PermissionID` ASC),
+  UNIQUE INDEX `SystemUserName_UNIQUE` (`SystemUserName` ASC));
