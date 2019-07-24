@@ -17,7 +17,6 @@ public class SystemAdminApplication {
 	public static void main(String[] args) throws Exception {
 		ConfigurableApplicationContext ctx = 
 		SpringApplication.run(SystemAdminApplication.class, args);
-		System.out.print("Hello World");
 	}
 	
 	@Controller

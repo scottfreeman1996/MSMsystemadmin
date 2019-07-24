@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS  `systemadmindatabase`.`permission` ;
-FLUSH TABLES  `systemadmindatabase`.`permission`  ; 
-CREATE TABLE `systemadmindatabase`.`permission` (
+DROP TABLE IF EXISTS  `skilladminsitedatabase`.`permission` ;
+FLUSH TABLES  `skilladminsitedatabase`.`permission`  ; 
+CREATE TABLE `skilladminsitedatabase`.`permission` (
   `PermissionID` INT NOT NULL,
   `SystemUserName` VARCHAR(20) NOT NULL,
   `PermissionUpdatePersonalDetails` TINYINT NOT NULL DEFAULT 1,
