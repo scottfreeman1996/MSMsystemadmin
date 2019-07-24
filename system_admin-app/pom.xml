@@ -8,10 +8,11 @@
 		<version>2.1.6.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	
 	<groupId>com.skillsmap.systemadmin</groupId>
 	<artifactId>system_admin-app</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<description>Spring Boot Application for Mastekeer Service</description>
+	<packaging>war</packaging>
+	<name>System Admin App</name>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -62,6 +63,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.2</version>
                 <configuration>
                     <!-- Java version -->
                     <source>1.8</source>
@@ -71,8 +73,28 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.1.6.RELEASE</version>
             </plugin>
-            
+            <plugin>
+ 				<groupId>com.microsoft.azure</groupId>
+ 				<artifactId>azure-webapp-maven-plugin</artifactId>
+ 				<version>1.6.0</version>
+				<configuration>
+      				<schemaVersion>V2</schemaVersion>
+      				<resourceGroup>rgMastekSkillsMap</resourceGroup>
+      				<appName>RoleSite</appName>
+      				<region>northeurope</region>
+      				<pricingTier>S1V1</pricingTier>
+					<!-- Begin of App Settings  -->
+      				<appSettings>
+        				<property>
+               				<name>JAVA_OPTS</name>
+               				<value>-Dserver.port=80</value>
+         				</property>
+      				</appSettings>
+      				<!-- End of App Settings  -->
+     		</configuration>
+			</plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <executions>
@@ -87,8 +109,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.0</version>
             </plugin>
 		</plugins>
 	</build>
 
 </project>
+
