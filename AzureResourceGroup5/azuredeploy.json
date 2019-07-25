@@ -157,7 +157,7 @@
         }
     },
     "variables": {
-        "databaseName": "[concat(parameters('siteName'), 'database')]",
+        "databaseName": "[concat(parameters('siteName'), 'db')]",
         "serverName": "[concat(parameters('resourceGroupName'), 'MSM')]",
         "hostingPlanName": "[concat(parameters('hostingPlanName'))]",
         "apiManagementServiceName": "[concat(parameters('apiManagementServiceName'))]"
