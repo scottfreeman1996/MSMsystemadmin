@@ -428,7 +428,18 @@
 					"dependsOn": [
 						"[concat('Microsoft.DBforMySQL/servers/', variables('serverName'))]"
 					]
-				}
+				},
+				{
+					"type": "Microsoft.DBforMySQL/servers/configurations",
+					  "apiVersion": "2017-12-01-preview",
+					  "name": "[concat(variables('serverName'), '/time_zone')]",
+					  "dependsOn": [
+						  "[resourceId('Microsoft.DBforMySQL/servers', variables('serverName'))]"
+					  ],
+					  "properties": {
+						  "value": "+0:00"
+					  }
+				  }
 			]
 		}
 	]
