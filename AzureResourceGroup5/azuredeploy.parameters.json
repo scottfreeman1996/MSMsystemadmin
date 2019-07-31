@@ -5,6 +5,9 @@
     "apiManagementServiceName": {
       "value": "APIM-MSM"
     },
+    "openapi_json": {
+      "type": "string"
+  },
     "publisherEmail": {
       "value": "mark.oates@mastek.com"
   },
