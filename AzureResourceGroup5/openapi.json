@@ -1,0 +1,1139 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "Competencies",
+    "description" : "All endpoints for creating,updating and reading Competencies",
+    "version" : "1.0"
+  },
+  "servers" : [ {
+    "url" : "https://apim-msm.portal.azure-api.net"
+  } ],
+  "paths" : {
+    "/competency/view" : {
+      "get" : {
+        "tags" : [ "Competency" ],
+        "summary" : "View all competencies",
+        "responses" : {
+          "200" : {
+            "description" : "A JSON array of competencies",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Competency"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/comptency/view/{CompetencyCategory}" : {
+      "get" : {
+        "tags" : [ "Competency" ],
+        "summary" : "View all Competencies by category",
+        "parameters" : [ {
+          "name" : "CompetencyCategory",
+          "in" : "path",
+          "description" : "Category of competency",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "A JSON array of company skills by category",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Competency"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/competency/update/{competencyID}" : {
+      "put" : {
+        "tags" : [ "Competency" ],
+        "summary" : "Update competency",
+        "description" : "This operation can only be done by users with the correct permissions",
+        "parameters" : [ {
+          "name" : "api_key",
+          "in" : "header",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "competencyID",
+          "in" : "path",
+          "description" : "ID of the competency to change",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Update a competency",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Competency"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Successfully updated"
+          },
+          "401" : {
+            "description" : "Invalid Permissions"
+          },
+          "404" : {
+            "description" : "Resource not found (Invalid competencyID)"
+          }
+        }
+      }
+    },
+    "/competency/create" : {
+      "post" : {
+        "tags" : [ "Competency" ],
+        "summary" : "Create a new competency",
+        "description" : "This operation can only be done by users with the correct permissions",
+        "parameters" : [ {
+          "name" : "api_key",
+          "in" : "header",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Created competency object",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Competency"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "401" : {
+            "description" : "Invalid Permissions"
+          }
+        }
+      }
+    },
+    "/SFIA/view" : {
+      "get" : {
+        "tags" : [ "SFIA" ],
+        "summary" : "View all SFIA skills",
+        "responses" : {
+          "200" : {
+            "description" : "A JSON array of SFIA skills",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SFIA"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/SFIA/view/{SkillCategory}" : {
+      "get" : {
+        "tags" : [ "SFIA" ],
+        "summary" : "View all SFIA Skills by category",
+        "parameters" : [ {
+          "name" : "SkillCategory",
+          "in" : "path",
+          "description" : "Category of SFIA Skill",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "A JSON array of company skills by category",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SFIA"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Resource not found (Invalid Category)"
+          }
+        }
+      }
+    },
+    "/CompanySkill/view/{SkillCategory}/{SkillSubCategory}" : {
+      "get" : {
+        "tags" : [ "SFIA" ],
+        "summary" : "View all SFIA Skills by subcategory of a category",
+        "parameters" : [ {
+          "name" : "SkillCategory",
+          "in" : "path",
+          "description" : "Category of SFIA Skill",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "SkillSubCategory",
+          "in" : "path",
+          "description" : "SubCategory of SFIA Skill Category",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "A JSON array of company skills by subcategory",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SFIA"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Resource not found (Invalid category)"
+          }
+        }
+      }
+    },
+    "/SFIA/update/{SkillID}" : {
+      "put" : {
+        "tags" : [ "SFIA" ],
+        "summary" : "Update a SFIA skill",
+        "description" : "This operation can only be done by users with the correct permissions",
+        "parameters" : [ {
+          "name" : "api_key",
+          "in" : "header",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "SkillID",
+          "in" : "path",
+          "description" : "ID of the SFIA skill to change",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Update a SFIA skill",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/SFIA"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Successfully updated"
+          },
+          "401" : {
+            "description" : "Invalid Permissions"
+          },
+          "404" : {
+            "description" : "Resource not found (Invalid SkillID)"
+          }
+        }
+      }
+    },
+    "/SFIA/create" : {
+      "post" : {
+        "tags" : [ "SFIA" ],
+        "summary" : "Create a new Skill",
+        "description" : "This operation can only be done by users with the correct permissions",
+        "parameters" : [ {
+          "name" : "api_key",
+          "in" : "header",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Created Skill object",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Competency"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "401" : {
+            "description" : "Invalid Permissions"
+          }
+        }
+      }
+    },
+    "/CompanySkill/view" : {
+      "get" : {
+        "tags" : [ "CompanySkill" ],
+        "summary" : "View all Company skills",
+        "responses" : {
+          "200" : {
+            "description" : "A JSON array of Company skills",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CompanySkill"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CompanySkill/view/{CompanySkillCategory}" : {
+      "get" : {
+        "tags" : [ "CompanySkill" ],
+        "summary" : "View all Company Skills by category",
+        "parameters" : [ {
+          "name" : "CompanySkillCategory",
+          "in" : "path",
+          "description" : "Category of Company Skill",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "A JSON array of company skills by category",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CompanySkill"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Resource not found (Invalid Category)"
+          }
+        }
+      }
+    },
+    "/CompanySkill/view/{CompanySkillCategory}/{CompanySkillSubCategory}" : {
+      "get" : {
+        "tags" : [ "CompanySkill" ],
+        "summary" : "View all Company Skills by subcategory of a company skill category",
+        "parameters" : [ {
+          "name" : "CompanySkillCategory",
+          "in" : "path",
+          "description" : "Category of Company Skill",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "CompanySkillSubCategory",
+          "in" : "path",
+          "description" : "SubCategory of Company Skill Category",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "A JSON array of company skills by subcategory",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CompanySkill"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Resource not found (Invalid Category)"
+          }
+        }
+      }
+    },
+    "/CompanySkill/update/{CompanySkillID}" : {
+      "put" : {
+        "tags" : [ "CompanySkill" ],
+        "summary" : "Update a Company skill",
+        "description" : "This operation can only be done by users with the correct permissions",
+        "parameters" : [ {
+          "name" : "api_key",
+          "in" : "header",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "CompanySkillID",
+          "in" : "path",
+          "description" : "ID of the Company skill to change",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Update a Company skill",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CompanySkill"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Successfully updated"
+          },
+          "401" : {
+            "description" : "Invalid Permissions"
+          },
+          "404" : {
+            "description" : "Resource not found (Invalid CompanySkillID)"
+          }
+        }
+      }
+    },
+    "/CompanySkill/create" : {
+      "post" : {
+        "tags" : [ "CompanySkill" ],
+        "summary" : "Create a new Company Skill",
+        "description" : "This operation can only be done by users with the correct permissions",
+        "parameters" : [ {
+          "name" : "api_key",
+          "in" : "header",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Created CompanySkill object",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CompanySkill"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "401" : {
+            "description" : "Invalid Permissions"
+          }
+        }
+      }
+    },
+    "/role/view" : {
+      "get" : {
+        "tags" : [ "Role" ],
+        "summary" : "View all roles",
+        "responses" : {
+          "200" : {
+            "description" : "A JSON array of all roles",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Role"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/role/update/{RoleID}" : {
+      "put" : {
+        "tags" : [ "Role" ],
+        "summary" : "Update role",
+        "description" : "This operation can only be done by users with the correct permissions",
+        "parameters" : [ {
+          "name" : "api_key",
+          "in" : "header",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "RoleID",
+          "in" : "path",
+          "description" : "ID of the Role to change",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Update a role",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Role"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Successfully updated"
+          },
+          "401" : {
+            "description" : "Invalid Permissions"
+          },
+          "404" : {
+            "description" : "Resource not found (Invalid RoleID)"
+          }
+        }
+      }
+    },
+    "/role/create" : {
+      "post" : {
+        "tags" : [ "Role" ],
+        "summary" : "Create a new role",
+        "description" : "This operation can only be done by users with the correct permissions",
+        "parameters" : [ {
+          "name" : "api_key",
+          "in" : "header",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Created role object",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Role"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "401" : {
+            "description" : "Invalid Permissions"
+          }
+        }
+      }
+    },
+    "/role/delete/{RoleID}" : {
+      "delete" : {
+        "tags" : [ "Role" ],
+        "summary" : "Delete a role",
+        "description" : "This operation can only be done by users with the correct permissions",
+        "parameters" : [ {
+          "name" : "api_key",
+          "in" : "header",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "RoleID",
+          "in" : "path",
+          "description" : "ID of Role",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "401" : {
+            "description" : "Invalid Permissions"
+          },
+          "404" : {
+            "description" : "Resource not found (Invalid RoleID)"
+          }
+        }
+      }
+    },
+    "/{EmployeeID}/view" : {
+      "get" : {
+        "tags" : [ "Mastekeer" ],
+        "summary" : "View employee information",
+        "parameters" : [ {
+          "name" : "EmployeeID",
+          "in" : "path",
+          "description" : "ID of Employee",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Get request successful",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Mastekeer"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Resource not found (Invalid EmployeeID)"
+          }
+        }
+      }
+    },
+    "/{EmployeeID}/update" : {
+      "put" : {
+        "tags" : [ "Mastekeer" ],
+        "summary" : "Update employee information",
+        "parameters" : [ {
+          "name" : "api_key",
+          "in" : "header",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "EmployeeID",
+          "in" : "path",
+          "description" : "ID of Employee",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Update employee information",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Mastekeer"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Successfully updated"
+          },
+          "401" : {
+            "description" : "Invalid Permissions"
+          },
+          "404" : {
+            "description" : "Resource not found (Invalid EmployeeID)"
+          }
+        }
+      }
+    },
+    "/{EmployeeID}/rolehistory" : {
+      "get" : {
+        "tags" : [ "Mastekeer" ],
+        "summary" : "View employee role history",
+        "parameters" : [ {
+          "name" : "EmployeeID",
+          "in" : "path",
+          "description" : "ID of Employee",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Get request successful",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/RoleHistory"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Resource not found (Invalid EmployeeID)"
+          }
+        }
+      }
+    },
+    "/{EmployeeID}/rolehistory/create" : {
+      "post" : {
+        "tags" : [ "Mastekeer" ],
+        "summary" : "Add new role history",
+        "description" : "This operation can only be done by users with the correct permissions",
+        "parameters" : [ {
+          "name" : "api_key",
+          "in" : "header",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "EmployeeID",
+          "in" : "path",
+          "description" : "ID of Employee",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Created Role History object",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Role"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "401" : {
+            "description" : "Invalid Permissions"
+          }
+        }
+      }
+    },
+    "/{EmployeeID}/rolehistory/delete" : {
+      "delete" : {
+        "tags" : [ "Mastekeer" ],
+        "summary" : "Remove role history",
+        "description" : "This operation can only be done by users with the correct permissions",
+        "parameters" : [ {
+          "name" : "api_key",
+          "in" : "header",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "EmployeeID",
+          "in" : "path",
+          "description" : "ID of Employee",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "401" : {
+            "description" : "Invalid Permissions"
+          }
+        }
+      }
+    },
+    "/{RoleID}/skills/view" : {
+      "get" : {
+        "tags" : [ "Role" ],
+        "summary" : "View skills for a given role",
+        "parameters" : [ {
+          "name" : "RoleID",
+          "in" : "path",
+          "description" : "ID of Role",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Get request successful",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SFIA"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Resource not found (Invalid RoleID)"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Competency" : {
+        "type" : "object",
+        "properties" : {
+          "CompetencyID" : {
+            "type" : "integer"
+          },
+          "CompetencyCategory" : {
+            "maxLength" : 20,
+            "type" : "string"
+          },
+          "CompetencyDescription" : {
+            "maxLength" : 200,
+            "type" : "string"
+          },
+          "level1" : {
+            "maxLength" : 500,
+            "type" : "string"
+          },
+          "level2" : {
+            "maxLength" : 500,
+            "type" : "string"
+          },
+          "level3" : {
+            "maxLength" : 500,
+            "type" : "string"
+          },
+          "level4" : {
+            "maxLength" : 500,
+            "type" : "string"
+          },
+          "level5" : {
+            "maxLength" : 500,
+            "type" : "string"
+          },
+          "level6" : {
+            "maxLength" : 500,
+            "type" : "string"
+          },
+          "VesrionID" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "SFIA" : {
+        "type" : "object",
+        "properties" : {
+          "SkillID" : {
+            "maxLength" : 20,
+            "type" : "integer"
+          },
+          "SkillCategory" : {
+            "maxLength" : 20,
+            "type" : "string"
+          },
+          "SkillSubcategory" : {
+            "maxLength" : 20,
+            "type" : "string"
+          },
+          "Skill" : {
+            "maxLength" : 20,
+            "type" : "string"
+          },
+          "SkillCode" : {
+            "maxLength" : 4,
+            "type" : "string"
+          },
+          "SkillDescription" : {
+            "maxLength" : 200,
+            "type" : "string"
+          },
+          "level1" : {
+            "maxLength" : 500,
+            "type" : "string"
+          },
+          "level2" : {
+            "maxLength" : 500,
+            "type" : "string"
+          },
+          "level3" : {
+            "maxLength" : 500,
+            "type" : "string"
+          },
+          "level4" : {
+            "maxLength" : 500,
+            "type" : "string"
+          },
+          "level5" : {
+            "maxLength" : 500,
+            "type" : "string"
+          },
+          "level6" : {
+            "maxLength" : 500,
+            "type" : "string"
+          },
+          "level7" : {
+            "maxLength" : 500,
+            "type" : "string"
+          },
+          "VersionID" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "CompanySkill" : {
+        "type" : "object",
+        "properties" : {
+          "CompanySkillID" : {
+            "maxLength" : 20,
+            "type" : "integer"
+          },
+          "CompanySkillCategory" : {
+            "maxLength" : 20,
+            "type" : "string"
+          },
+          "CompanySkillSubcategory" : {
+            "maxLength" : 20,
+            "type" : "string"
+          },
+          "CompanySkill" : {
+            "maxLength" : 20,
+            "type" : "string"
+          },
+          "CompanySkillDescription" : {
+            "maxLength" : 200,
+            "type" : "string"
+          },
+          "level1" : {
+            "maxLength" : 500,
+            "type" : "string"
+          },
+          "level2" : {
+            "maxLength" : 500,
+            "type" : "string"
+          },
+          "level3" : {
+            "maxLength" : 500,
+            "type" : "string"
+          },
+          "level4" : {
+            "maxLength" : 500,
+            "type" : "string"
+          },
+          "level5" : {
+            "maxLength" : 500,
+            "type" : "string"
+          },
+          "level6" : {
+            "maxLength" : 500,
+            "type" : "string"
+          },
+          "level7" : {
+            "maxLength" : 500,
+            "type" : "string"
+          },
+          "VersionID" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "Role" : {
+        "type" : "object",
+        "properties" : {
+          "RoleID" : {
+            "type" : "integer"
+          },
+          "SkillTitle" : {
+            "maxLength" : 30,
+            "type" : "string"
+          },
+          "RoleGroupID" : {
+            "type" : "integer"
+          },
+          "RoleGrade" : {
+            "maxLength" : 30,
+            "type" : "string"
+          },
+          "RoleSummary" : {
+            "maxLength" : 400,
+            "type" : "string"
+          },
+          "VersionID" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "Mastekeer" : {
+        "type" : "object",
+        "properties" : {
+          "EmployeeID" : {
+            "type" : "integer"
+          },
+          "EmployeeNumber" : {
+            "type" : "integer"
+          },
+          "EmployeeSecondaryNumber" : {
+            "type" : "integer"
+          },
+          "EmployeeGivenName" : {
+            "maxLength" : 10,
+            "type" : "string"
+          },
+          "EmployeeSurname" : {
+            "maxLength" : 20,
+            "type" : "string"
+          },
+          "EmployeeMail" : {
+            "maxLength" : 30,
+            "type" : "string"
+          },
+          "EmployeeStartDate" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "EmployeeBenchStatus" : {
+            "type" : "boolean"
+          },
+          "BaseLocationID" : {
+            "type" : "integer"
+          },
+          "ClientID" : {
+            "type" : "integer"
+          },
+          "EmployeeActiveDirectoryID" : {
+            "type" : "integer"
+          },
+          "PermissionID" : {
+            "type" : "integer"
+          },
+          "VersionID" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "RoleHistory" : {
+        "type" : "object",
+        "properties" : {
+          "RoleHistoryID" : {
+            "type" : "integer"
+          },
+          "EmployeeID" : {
+            "type" : "integer"
+          },
+          "RoleID" : {
+            "type" : "integer"
+          },
+          "RoleStartDate" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "RoleEndDate" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "RoleGroupID" : {
+            "type" : "integer"
+          },
+          "RoleTitle" : {
+            "maxLength" : 30,
+            "type" : "string"
+          },
+          "RoleGrade" : {
+            "maxLength" : 30,
+            "type" : "string"
+          },
+          "RoleSummary" : {
+            "maxLength" : 400,
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}
