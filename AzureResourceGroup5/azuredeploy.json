@@ -10,7 +10,7 @@
     },
     "openapi_json": {
             "type": "string",
-            "value": "openapi.json"
+            "defaultValue": "openapi.json"
         },
     "enabledForDeployment": {
       "type": "bool",
