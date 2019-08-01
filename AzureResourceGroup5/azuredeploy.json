@@ -289,7 +289,7 @@
         "publisherName": "[parameters('apiManagementServiceName')]",
         "path": "APIM-MSM",
     		"contentValue": "[parameters('openapi_json')]",
-    		"contentFormat": "openapi-json"
+    		"contentFormat": "swagger-json"
       },
       "sku": {
         "name": "Developer",
