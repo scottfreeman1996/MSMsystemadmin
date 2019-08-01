@@ -287,7 +287,7 @@
         "virtualNetworkType": "None",
         "publisherEmail": "[parameters('publisherEmail')]",
         "publisherName": "[parameters('apiManagementServiceName')]",
-        "path": "MastekSkillsMap",
+        "path": "APIM-MSM",
     		"contentValue": "[parameters('openapi_json')]",
     		"contentFormat": "openapi-json"
       },
