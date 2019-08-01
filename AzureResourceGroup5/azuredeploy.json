@@ -287,9 +287,9 @@
         "virtualNetworkType": "None",
         "publisherEmail": "[parameters('publisherEmail')]",
         "publisherName": "[parameters('apiManagementServiceName')]",
-        "path": "APIM-MSM",
-    		"contentValue": "[parameters('openapi_json')]",
-    		"contentFormat": "swagger-json"
+        "path": "MastekSkillsMap",
+    		"contentValue": "https://app.swaggerhub.com/apis/George61080/MastekSkillsMap/1.0",
+    		"contentFormat": "swagger-link-json"
       },
       "sku": {
         "name": "Developer",
