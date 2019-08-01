@@ -10,9 +10,7 @@
             "type": "string",
             "defaultValue": "MastekSkillsMap"
         },
-        "swagger_json": {
-            "type": "string"
-        },
+        
     "keyVaultName": {
       "type": "string",
       "metadata": {
