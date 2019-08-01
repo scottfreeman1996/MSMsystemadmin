@@ -8,6 +8,9 @@
         "description": "Specifies the name of the key vault."
       }
     },
+    "openapi_json": {
+            "type": "string"
+        },
     "enabledForDeployment": {
       "type": "bool",
       "defaultValue": false,
