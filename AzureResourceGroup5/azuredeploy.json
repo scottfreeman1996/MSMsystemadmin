@@ -19,7 +19,7 @@
     },
     "openapi_json": {
             "type": "string",
-            "defaultValue": "$(System.DefaultWorkingDirectory)/_System Admin Service CI Pipeline/arm/openapi.json"
+            "defaultValue": "mastekcto/Mastek%20Skills%20Map/_git/System%20Admin?path=%2FAzureResourceGroup5%2Fopenapi.json&version=GBmaster"
         },
     "enabledForDeployment": {
       "type": "bool",
