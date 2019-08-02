@@ -19,7 +19,7 @@
     },
     "openapi_json": {
             "type": "string",
-            "defaultValue": ""
+            "defaultValue": "https://virtserver.swaggerhub.com/George61080/mastekskillsmap/1.0.0"
         },
     "enabledForDeployment": {
       "type": "bool",
@@ -274,7 +274,7 @@
             "properties": {
                 "path": "MastekSkillsMap",
                 "contentValue": "openapi_json",
-                "contentFormat": "swagger-json"
+                "contentFormat": "openapi-json"
             }
         },
 
