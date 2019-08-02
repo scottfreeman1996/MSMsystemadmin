@@ -19,7 +19,7 @@
     },
     "openapi_json": {
             "type": "string",
-            "defaultValue": "https://app.swaggerhub.com/apis/George61080/MastekSkillsMap/1.0?loggedInWithGitHub=true"
+            "defaultValue": "http://app.swaggerhub.com/apis/George61080/MastekSkillsMap/1.0?loggedInWithGitHub=true"
         },
     "enabledForDeployment": {
       "type": "bool",
