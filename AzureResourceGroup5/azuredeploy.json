@@ -19,7 +19,7 @@
     },
     "openapi_json": {
             "type": "string",
-            "defaultValue": "mastekcto/Mastek%20Skills%20Map/_git/System%20Admin?path=%2FAzureResourceGroup5%2Fopenapi.json&version=GBmaster"
+            "defaultValue": "https://app.swaggerhub.com/apis/George61080/MastekSkillsMap/1.0?loggedInWithGitHub=true"
         },
     "enabledForDeployment": {
       "type": "bool",
