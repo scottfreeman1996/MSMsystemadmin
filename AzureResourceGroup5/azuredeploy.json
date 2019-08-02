@@ -19,7 +19,7 @@
     },
     "openapi_json": {
             "type": "string",
-            "defaultValue": "$(System.DefaultWorkingDirectory)/_Role Service CI Build Pipeline/arm/azuredeploy.json"
+            "defaultValue": "$(System.DefaultWorkingDirectory)/_System Admin Service CI Pipeline/arm/openapi.json"
         },
     "enabledForDeployment": {
       "type": "bool",
