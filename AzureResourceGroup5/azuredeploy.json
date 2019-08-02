@@ -274,7 +274,7 @@
             "properties": {
                 "path": "MastekSkillsMap",
                 "contentValue": "openapi_json",
-                "contentFormat": "openapi-json"
+                "contentFormat": "openapi-link-json"
             }
         },
 
