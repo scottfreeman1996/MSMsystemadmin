@@ -273,8 +273,8 @@
             "apiVersion": "2018-06-01-preview",
             "properties": {
                 "path": "MastekSkillsMap",
-                "contentValue": "https://app.swaggerhub.com/apis/George61080/MastekSkillsMap/1.0",
-                "contentFormat": "swagger-link-json"
+                "contentValue": "openapi_json",
+                "contentFormat": "swagger-json"
             }
         },
 
