@@ -1,26 +1,13 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": {
-     "apim_name": {
-            "type": "string",
-            "defaultValue": "APIM-MSM"
-        },
-        "api_name": {
-            "type": "string",
-            "defaultValue": "MSMAPI"
-        },
-        
+  "parameters": { 
     "keyVaultName": {
       "type": "string",
-      "metadata": {
+      "metadata": { 
         "description": "Specifies the name of the key vault."
       }
     },
-    "openapi_json": {
-            "type": "string",
-            "defaultValue": "$ref: 'openapi.json'"
-        },
     "enabledForDeployment": {
       "type": "bool",
       "defaultValue": false,
@@ -252,7 +239,7 @@
     },
     "hostingPlanName": {
       "type": "string",
-      "metadata": {
+      "metadata": { 
         "description": "Name of app service plan"
       }
     }
@@ -268,15 +255,44 @@
   },
   "resources": [
     {
-       "type": "Microsoft.ApiManagement/service/apis",
-            "name": "[concat(parameters('apim_name'), '/' ,parameters('api_name'))]",
-            "apiVersion": "2018-06-01-preview",
-            "properties": {
-                "path": "MastekSkillsMap",
-                "contentValue": "openapi_json",
-                "contentFormat":"swagger-json"
-            }},
-
+      "name": "[parameters('apiManagementServiceName')]",
+      "type": "Microsoft.ApiManagement/service",
+      "apiVersion": "2019-01-01",
+      "tags": {},
+      "properties": {
+        "notificationSenderEmail": "apimgmt-noreply@mail.windowsazure.com",
+        "hostnameConfigurations": [
+          {
+            "type": "Proxy",
+            "hostName": "[concat(parameters('apiManagementServiceName'), '.azure-api.net')]",
+            "defaultSslBinding": "true",
+            "negotiateClientCertificate": "false"
+          }
+        ],
+        "customProperties": {
+          "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10": "False",
+          "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11": "False",
+          "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Ssl30": "False",
+          "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168": "False",
+          "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10": "False",
+          "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11": "False",
+          "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": "False",
+          "Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": "False"
+        },
+        "enableClientCertificate": "boolean",
+        "virtualNetworkType": "None",
+        "publisherEmail": "[parameters('publisherEmail')]",
+        "publisherName": "[parameters('apiManagementServiceName')]"
+      },
+      "sku": {
+        "name": "Developer",
+        "capacity": "1"
+      },
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "location": "[parameters('location')]"
+    },
     {
       "apiVersion": "2016-09-01",
       "name": "[parameters('hostingPlanName')]",
@@ -285,11 +301,10 @@
       "properties": {
         "name": "[variables('hostingPlanName')]",
         "workerSizeId": "1",
-        "reserved": true,
-        "numberOfWorkers": 0,
-        "hostingEnvironment": ""
+        "reserved": false,
+        "numberOfWorkers": 0
       },
-      "sku": {
+      "sku": { 
         "Tier": "Standard",
         "Name": "S1"
       }
