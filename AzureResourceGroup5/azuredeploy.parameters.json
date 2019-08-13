@@ -4,7 +4,7 @@
   "parameters": {
     "apiManagementServiceName": {
       "value": "APIM-SkillsMap"
-    },
+    }, 
     "publisherEmail": {
       "value": "mark.oates@mastek.com"
   },
