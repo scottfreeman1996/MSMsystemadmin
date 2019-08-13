@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS  `svcSystemAdminsdb`.`permission` ;
-FLUSH TABLES  `svcSystemAdmins`.`permission`  ; 
-CREATE TABLE `svcSystemAdmins`.`permission` (
+FLUSH TABLES  `svcSystemAdminsdb`.`permission`  ; 
+CREATE TABLE `svcSystemAdminsdb`.`permission` (
   `PermissionID` INT NOT NULL,
   `SystemUserName` VARCHAR(20) NOT NULL,
   `PermissionUpdatePersonalDetails` TINYINT NOT NULL DEFAULT 1,
