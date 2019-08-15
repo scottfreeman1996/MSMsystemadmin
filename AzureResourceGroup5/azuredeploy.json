@@ -451,8 +451,8 @@
           }
         }
       ]
-    },
-    {
+    }
+    /*{
       "name": "MSMVnet",
       "type": "Microsoft.Network/virtualNetworks",
       "location": "[resourceGroup().location]",
@@ -477,6 +477,6 @@
           
         ]
       }
-    }
+    }*/
   ]
 }
