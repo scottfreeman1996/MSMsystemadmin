@@ -19,5 +19,5 @@ public class SystemAdminApplication  extends SpringBootServletInitializer {
 		SpringApplication.run(SystemAdminApplication.class, args);
 	}
 
-}
+} 
 
